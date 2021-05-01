@@ -6,14 +6,15 @@ namespace App\Converters;
 
 class MartianCoordinatedTimeConverter implements ConverterInterface
 {
-
-    public function getConverterName()
+    public static function getConverterName()
     {
-        return "Martian Coordinated Time 'MTC' ";
+        return "Martian Coordinated Time 'MTC'";
     }
 
-    public static function convert($payload)
+    public static function convert($msdData)
     {
-        // TODO: Implement convert() method.
+        $mct = (int)round(fmod($msdData, 1) * self::TOTAL_SECONDS_PER_DAY);
+        $mctTime = gmdate(self::MCT_TIME_FORMAT, $mct);
+        return $mctTime;
     }
 }

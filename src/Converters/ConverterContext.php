@@ -6,19 +6,17 @@ namespace App\Converters;
 
 class ConverterContext
 {
-    public function convertContextDate($converter_name, $payload)
+    public function convertContextDate($payload)
     {
-        switch ($converter_name) {
-            case "MSD":
-                $responseStatus = MarsSolDateConverter::convert($payload);
-                break;
-            case "MTC":
-                $responseStatus = MartianCoordinatedTimeConverter::convert($payload);
-                break;
-            default:
-                $responseStatus = Null;
-        }
+        $timestamp = $payload->getTimestamp();
+        $msdData = MarsSolDateConverter::convert($timestamp);
+        $mctData = MartianCoordinatedTimeConverter::convert($msdData);
 
-        return $responseStatus;
+        $response = [
+            MarsSolDateConverter::getConverterName() => $msdData,
+            MartianCoordinatedTimeConverter::getConverterName() => $mctData
+        ];
+
+        return $response;
     }
 }
