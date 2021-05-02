@@ -1,4 +1,4 @@
 time_convert:
   path: /time/convert
-  methods: GET
+  methods: POST
   controller: App\Controller\API\TimeConvertController::convert

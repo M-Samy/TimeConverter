@@ -14,7 +14,7 @@ class MartianCoordinatedTimeConverter implements ConverterInterface
     public static function convert($msdData)
     {
         $mct = (int)round(fmod($msdData, 1) * self::TOTAL_SECONDS_PER_DAY);
-        $mctTime = gmdate(self::MCT_TIME_FORMAT, $mct);
-        return $mctTime;
+        $formattedMCT = gmdate(self::MCT_TIME_FORMAT, $mct);
+        return $formattedMCT;
     }
 }
