@@ -15,7 +15,7 @@ class MarsSolDateConverter implements ConverterInterface
     public static function convert($payload)
     {
         $timestampWithLeapSeconds = $payload + self::CURRENT_LEAP_SECONDS;
-        $msDate = $timestampWithLeapSeconds / self::TOTAL_SECONDS_PER_SOL + self::CORRECTION;
+        $msDate = $timestampWithLeapSeconds / self::TOTAL_SECONDS_PER_SOL + self::MSD_CORRECTION;
         $msdTime = round($msDate, self::MSD_ACCURACY);
         return $msdTime;
     }
