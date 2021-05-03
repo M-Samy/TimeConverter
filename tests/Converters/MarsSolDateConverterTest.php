@@ -11,6 +11,14 @@ class MarsSolDateConverterTest extends TestCase
 {
     private $validUTCString = "2021-05-02 19:27:43";
     private $msdTime = 52375.32071;
+    private $msdConverterName = "Mars Sol Date 'MSD'";
+
+    public function testGetConverterName()
+    {
+        $msdConverterName = MarsSolDateConverter::getConverterName();
+        $this->assertIsString($msdConverterName);
+        $this->assertEquals($msdConverterName, $this->msdConverterName);
+    }
 
     public function testMSDConverter()
     {

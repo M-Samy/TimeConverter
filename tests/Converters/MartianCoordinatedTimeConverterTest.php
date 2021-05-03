@@ -10,6 +10,14 @@ class MartianCoordinatedTimeConverterTest extends TestCase
 {
     private $msdTime = 52375.32071;
     private $mcTime = "07:41:49";
+    private $mtcConverterName = "Martian Coordinated Time 'MTC'";
+
+    public function testGetConverterName()
+    {
+        $mtcConverterName = MartianCoordinatedTimeConverter::getConverterName();
+        $this->assertIsString($mtcConverterName);
+        $this->assertEquals($mtcConverterName, $this->mtcConverterName);
+    }
 
     public function testMSDConverter()
     {
