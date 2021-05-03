@@ -11,9 +11,9 @@ class MartianCoordinatedTimeConverter implements ConverterInterface
         return "Martian Coordinated Time 'MTC'";
     }
 
-    public static function convert($msdData)
+    public static function convert($msdTime)
     {
-        $mct = (int)round(fmod($msdData, 1) * self::TOTAL_SECONDS_PER_DAY);
+        $mct = (int)round(fmod($msdTime, 1) * self::TOTAL_SECONDS_PER_DAY);
         $formattedMCT = gmdate(self::MCT_TIME_FORMAT, $mct);
         return $formattedMCT;
     }
