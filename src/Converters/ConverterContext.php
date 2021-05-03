@@ -3,6 +3,7 @@
 
 namespace App\Converters;
 
+use App\Validators\ValidateDateTime;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,7 +14,7 @@ class ConverterContext
         $response = new JsonResponse();
 
         try {
-            $utcTime = new \DateTime($utcTimeString);
+            $utcTime = ValidateDateTime::validate($utcTimeString);
             $timestamp = $utcTime->getTimestamp();
             $msdData = MarsSolDateConverter::convert($timestamp);
             $mctData = MartianCoordinatedTimeConverter::convert($msdData);
